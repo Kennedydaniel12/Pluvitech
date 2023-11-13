@@ -37,14 +37,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Função para avaliar a probabilidade de chuva
     function avaliarProbabilidadeChuva(weatherData) {
-        // Se a condição meteorológica atual indica chuva, ou a umidade é alta, podemos considerar uma probabilidade de chuva
         const condicaoAtual = weatherData.weather[0].main.toLowerCase();
         const umidade = weatherData.main.humidity;
-
-        if (condicaoAtual.includes('rain') || umidade > 70) {
-            return 'Sim';
+    
+        // Definir limites para categorias de probabilidade
+        const limiteBaixo = 30;
+        const limiteAlto = 70;
+    
+        if (condicaoAtual.includes('rain') || umidade > limiteAlto) {
+            return 'Alta';
+        } else if (umidade > limiteBaixo) {
+            return 'Média';
         } else {
-            return 'Não';
+            return 'Baixa';
         }
     }
 
