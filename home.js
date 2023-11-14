@@ -35,24 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return statusRecipiente === '1' ? 'Reservatório cheio' : 'Reservatório vazio';
     }
 
-    // Função para avaliar a probabilidade de chuva
-    function avaliarProbabilidadeChuva(weatherData) {
-        const condicaoAtual = weatherData.weather[0].main.toLowerCase();
-        const umidade = weatherData.main.humidity;
-    
-        // Definir limites para categorias de probabilidade
-        const limiteBaixo = 30;
-        const limiteAlto = 70;
-    
-        if (condicaoAtual.includes('rain') || umidade > limiteAlto) {
-            return 'Alta';
-        } else if (umidade > limiteBaixo) {
-            return 'Média';
-        } else {
-            return 'Baixa';
-        }
-    }
-
     // Função para atualizar os dados na página
     function updateData() {
         // Fazer uma solicitação para carregar os dados do arquivo
@@ -83,9 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Atualizar o elemento da página com a previsão do tempo
                 previsaoTempoElement.textContent = `Temperatura: ${temperaturaInteira}°C, Condição: ${condicaoTraduzida}`;
 
-                // Avaliar a probabilidade de chuva
-                const probabilidadeChuva = avaliarProbabilidadeChuva(weatherData);
-                probabilidadeChuvaElement.textContent = `Probabilidade de Chuva: ${probabilidadeChuva}`;
             })
             .catch(error => {
                 console.error('Erro ao obter a previsão do tempo:', error);
