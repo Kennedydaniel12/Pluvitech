@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch('https://api.openweathermap.org/data/2.5/weather?q=Vitoria%20da%20Conquista&appid=56c20e15efb608aca80b4b7246c7b172&units=metric')
             .then(response => response.json())
             .then(weatherData => {
+                console.log(weatherData.main.temp)
                 // Exibir apenas os números inteiros na temperatura
                 const temperaturaInteira = parseInt(weatherData.main.temp);
                 

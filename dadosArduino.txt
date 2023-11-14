@@ -1,2 +1,1 @@
-Status do Telhado: 0
-Status do Recipiente: 1
+Status do Telhado: 1
