@@ -23,19 +23,35 @@ body {
     align-items: center;
     height: 100vh;
 }
-
+#title {
+    display: flex;
+    flex-direction: column;
+    /* word-break: break-word; */
+    margin-bottom: 20px;
+}
+#title div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+#logo {
+    width: 40px;
+    margin-bottom: 5px;
+}
 .container {
     background-color: transparent;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 20px;
+    width: 100%;
 }
 
 .project-name {
     font-size: 36px;
     color: #ffffff;
-    margin-bottom: 20px;
+    line-height: 35px;
 }
 
 #c-infos {
@@ -64,12 +80,15 @@ body {
     width: 100%;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
+.c-telhado img {
+    max-width: 365px;
+    width: 100%;
+}
 
 h2 {
     color: #ffffff;
     font-weight: 400;
     font-size: 24px;
-    /* margin-bottom: 10px; */
 }
 p {
     font-size: 18px;
@@ -105,5 +124,8 @@ p {
     }
     #c-infos {
         flex-direction: column;
+    }
+    h2 {
+        font-size: 20px;
     }
 }
