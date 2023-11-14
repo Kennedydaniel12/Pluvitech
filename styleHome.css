@@ -1,8 +1,23 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f5f9;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+:root {
+    --ensolarado: linear-gradient(0deg, rgba(236,197,46,1) 0%, rgba(230,150,66,1) 80%);
+    --chuva: linear-gradient(0deg, rgba(92,166,207,1) 0%, rgba(0,33,80,1) 100%);
+    --nublado: linear-gradient(0deg, rgba(141,197,229,1) 0%, rgba(46,102,126,1) 80%);
+    --chuvisco: linear-gradient(0deg, rgba(100,202,255,1) 0%, rgba(0,72,125,1) 100%);
+    --tempestade: linear-gradient(0deg, rgba(2,80,131,1) 0%, rgba(0,22,35,1) 80%);
+    --neve: linear-gradient(0deg, rgba(92,224,255,1) 0%, rgba(23,113,134,1) 80%);
+    --nevoeiro: linear-gradient(0deg, rgba(112,112,112,1) 0%, rgba(153,153,153,1) 33%, rgba(87,87,87,1) 66%, rgba(153,153,153,1) 100%);
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* background: var(--ensolarado); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +25,7 @@ body {
 }
 
 .container {
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -19,26 +34,53 @@ body {
 
 .project-name {
     font-size: 36px;
-    color: #007BFF;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
-.data {
-    margin: 20px 0;
+#c-infos {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.c-tempo {
+    background: var(--ensolarado);
+    border-radius: 10px ;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+#previsao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.c-telhado {
+    background: var(--ensolarado);
+    border-radius: 10px ;
+    padding: 12px;
+    width: 100%;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
 h2 {
-    color: #007BFF;
-    margin-bottom: 10px;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 24px;
+    /* margin-bottom: 10px; */
 }
-
 p {
     font-size: 18px;
-    color: #333;
+    color: #ffffff;
+}
+#temperatura {
+    font-size: 48px;
 }
 
 .logoutButton {
-    background-color: #FF5722;
+    background-color: transparent;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -46,8 +88,22 @@ p {
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.6);
 }
 
 .logoutButton:hover {
     background-color: #E64A19;
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        padding: 15px;
+        height: 100%;
+    }
+    .project-name {
+        font-size: 28px;
+    }
+    #c-infos {
+        flex-direction: column;
+    }
 }

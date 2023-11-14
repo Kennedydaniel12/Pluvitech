@@ -4,7 +4,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const statusTelhadoElement = document.getElementById("statusTelhado");
     const quantidadeAguaElement = document.getElementById("quantidadeAgua");
     const previsaoTempoElement = document.getElementById("previsaoTempo");
-    const probabilidadeChuvaElement = document.getElementById("probabilidadeChuva");
+    const temperaturaElement = document.getElementById("temperatura");
+    const condicaoElement = document.getElementById("condicao");
+    const iconCondicao = document.getElementById("iconCondisao");
+    const background = Array.from(document.querySelectorAll('.background'))
+    const telhado = document.getElementById('telhado')
+
+    console.log(background);
+    
+    // const probabilidadeChuvaElement = document.getElementById("probabilidadeChuva");
+
 
     if (!loggedIn) {
         // Se o usuário não estiver logado, redirecionar de volta para a página de login
@@ -27,6 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Função para obter o texto correspondente ao status do telhado
     function getStatusTelhado(statusTelhado) {
+        if(statusTelhado === '1'){
+            telhado.src = './img/tetoAberto.png'
+        } else {
+            telhado.src = './img/tetoFechado.png'
+        }
         return statusTelhado === '1' ? 'Telhado aberto' : 'Telhado fechado';
     }
 
@@ -47,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Atualizar os elementos da página com os dados do Arduino
                 statusTelhadoElement.textContent = getStatusTelhado(statusTelhado);
-                quantidadeAguaElement.textContent = getStatusRecipiente(statusRecipiente);
+                // quantidadeAguaElement.textContent = getStatusRecipiente(statusRecipiente);
             })
             .catch(error => console.error('Erro ao carregar os dados:', error));
 
@@ -63,7 +77,54 @@ document.addEventListener("DOMContentLoaded", function () {
                 const condicaoTraduzida = traduzirCondicao(weatherData.weather[0].main);
 
                 // Atualizar o elemento da página com a previsão do tempo
-                previsaoTempoElement.textContent = `Temperatura: ${temperaturaInteira}°C, Condição: ${condicaoTraduzida}`;
+                temperaturaElement.textContent = `${temperaturaInteira}°C`
+                switch(condicaoTraduzida) {
+                    case 'Céu Limpo':
+                        iconCondicao.src = './img/ensolarado.png'
+                        for(i = 0; i < background.length; i++){
+                            background[i].style.background = 'var(--ensolarado)'
+                        }
+                        break;
+                    case 'Nublado':
+                        iconCondicao.src = './img/nublado.png'
+                        for(i = 0; i < background.length; i++){
+                            background[i].style.background = 'var(--nublado)'
+                        }
+                        break;
+                    case 'Chuva':
+                        iconCondicao.src = './img/chuva.png'
+                        for(i = 0; i < background.length; i++){
+                            background[i].style.background = 'var(--chuva)'
+                        }
+                        break;
+                    case 'Chuvisco':
+                        iconCondicao.src = './img/chuvisco.png'
+                        for(i = 0; i < background.length; i++){
+                            background[i].style.background = 'var(--chuvisco)'
+                        }
+                        break;
+                    case 'Tempestade':
+                        iconCondicao.src = './img/tempestade.png'
+                        for(i = 0; i < background.length; i++){
+                            background[i].style.background = 'var(--tempestade)'
+                        }
+                        break;
+                    case 'Neve':
+                        iconCondicao.src = './img/neve.png'
+                        for(i = 0; i < background.length; i++){
+                            background[i].style.background = 'var(--neve)'
+                        }
+                        break;
+                    case 'Nevoeiro':
+                        iconCondicao.src = './img/Nevoeiro.png'
+                        for(i = 0; i < background.length; i++){
+                            background[i].style.background = 'var(--nevoeiro)'
+                        }
+                        break;
+                    
+                }
+                condicaoElement.textContent = `${condicaoTraduzida}`
+                // previsaoTempoElement.textContent = `Temperatura: ${temperaturaInteira}°C, Condição: ${condicaoTraduzida}`;
 
             })
             .catch(error => {
@@ -74,13 +135,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Mapeamento para tradução das condições meteorológicas
     const traducoesCondicoes = {
-        'clear': 'céu limpo',
-        'clouds': 'nublado',
-        'rain': 'chuva',
-        'drizzle': 'chuvisco',
-        'thunderstorm': 'tempestade',
-        'snow': 'neve',
-        'mist': 'nevoeiro'
+        'clear': 'Céu Limpo',
+        'clouds': 'Nublado',
+        'rain': 'Chuva',
+        'drizzle': 'Chuvisco',
+        'thunderstorm': 'Tempestade',
+        'snow': 'Neve',
+        'mist': 'Nevoeiro'
     };
 
     // Função para traduzir a condição meteorológica

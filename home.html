@@ -6,16 +6,31 @@
     <link rel="stylesheet" href="styleHome.css">
     <title>Página Inicial</title>
 </head>
-<body>
+<body class="background">
     <div class="container">
         <h1 class="project-name">Pluvitech - Controle do Telhado e Captação de Água</h1>
-        <div class="data">
-            <h2>Status do Telhado</h2>
-            <p id="statusTelhado">Aguardando dados...</p>
-        </div>
-        <div class="data">
-            <h2>Previsão do Tempo</h2>
-            <p id="previsaoTempo">Aguardando dados...</p>
+        
+        
+        <div id="c-infos">
+            <div class="c-tempo background">
+                <h2>Previsão do Tempo</h2>
+                <div id="previsao">
+                    <img src="./img/Nublado.png" alt="" id="iconCondisao">
+                    <p id="temperatura"></p>
+                    <p id="condicao"></p>
+                </div>
+                <div>
+
+                </div>
+                <!-- <p id="previsaoTempo">Aguardando dados...</p> -->
+            </div>
+            <div class="c-telhado background">
+                <div>
+                    <h2>Status do Telhado</h2>
+                    <p id="statusTelhado">Aguardando dados...</p>
+                </div>
+                <img src="" alt="" id="telhado">
+            </div>
         </div>
         <button class="logoutButton" id="logoutButton">Logout</button>
     </div>
