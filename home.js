@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const background = Array.from(document.querySelectorAll('.background'))
     const telhado = document.getElementById('telhado')
 
-    console.log(background);
+    const data = new Date()
+    let hora = data.getHours()
     
     // const probabilidadeChuvaElement = document.getElementById("probabilidadeChuva");
 
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch('https://api.openweathermap.org/data/2.5/weather?q=Vitoria%20da%20Conquista&appid=56c20e15efb608aca80b4b7246c7b172&units=metric')
             .then(response => response.json())
             .then(weatherData => {
-                console.log(weatherData.main.temp)
+                // console.log(weatherData.main.temp)
                 // Exibir apenas os números inteiros na temperatura
                 const temperaturaInteira = parseInt(weatherData.main.temp);
                 
@@ -80,9 +81,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 temperaturaElement.textContent = `${temperaturaInteira}°C`
                 switch(condicaoTraduzida) {
                     case 'Céu Limpo':
-                        iconCondicao.src = './img/ensolarado.png'
-                        for(i = 0; i < background.length; i++){
-                            background[i].style.background = 'var(--ensolarado)'
+                        if(hora >= 17 || hora <= 6){
+                            iconCondicao.src = './img/noite.png'
+                            for(i = 0; i < background.length; i++){
+                            background[i].style.background = 'var(--noite)'
+                            }
+                        }else {
+                            iconCondicao.src = './img/ensolarado.png'
+                            for(i = 0; i < background.length; i++){
+                                background[i].style.background = 'var(--ensolarado)'
+                            }
                         }
                         break;
                     case 'Nublado':

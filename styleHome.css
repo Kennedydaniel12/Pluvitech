@@ -12,6 +12,7 @@
     --tempestade: linear-gradient(0deg, rgba(2,80,131,1) 0%, rgba(0,22,35,1) 80%);
     --neve: linear-gradient(0deg, rgba(92,224,255,1) 0%, rgba(23,113,134,1) 80%);
     --nevoeiro: linear-gradient(0deg, rgba(112,112,112,1) 0%, rgba(153,153,153,1) 33%, rgba(87,87,87,1) 66%, rgba(153,153,153,1) 100%);
+    --noite: linear-gradient(0deg, rgba(0,51,128,1) 0%, rgba(0,17,43,1) 100%);
 }
 
 
